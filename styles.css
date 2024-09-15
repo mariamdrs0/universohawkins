@@ -1,0 +1,403 @@
+/* Importa a fonte Chakra Petch do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* Estiliza o corpo da página */
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Chakra Petch", sans-serif; /* Define a fonte padrão */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Usa Flexbox para layout */
+    flex-direction: column; /* Alinha os itens na vertical */
+    min-height: 100vh; /* Garante que o corpo ocupe toda a altura da viewport */
+    position: relative;
+    overflow-x: hidden; /* Evita rolagem horizontal */
+}
+
+/* Adiciona o background da página atrás do gradiente */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('img/personagens.jpg') no-repeat center center fixed; /* Ajuste o caminho para sua imagem de background */
+    background-size: cover; /* Faz a imagem de fundo cobrir toda a área */
+    z-index: -2; /* Coloca a imagem atrás do gradiente e do conteúdo */
+}
+
+/* Overlay para efeito de fundo */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.353); /* Define a cor de fundo e a transparência */
+    z-index: -1; /* Mantém a camada de transparência atrás do conteúdo */
+}
+
+/* Gradiente de fundo, que deve ficar sobre a imagem de background */
+body {
+    background: linear-gradient(to bottom, #9c0202, #000000); /* Gradiente de vermelho para preto */
+    z-index: -1; /* Mantém o gradiente atrás do conteúdo, mas sobre a imagem de fundo */
+}
+
+/* Estiliza o cabeçalho */
+header {
+    display: flex;
+    align-items: center; /* Alinha a imagem e o título verticalmente no centro */
+    justify-content: space-between; /* Espaça a imagem e o container dos botões ao máximo */
+    background-color: #000000; /* Cor de fundo do cabeçalho */
+    padding: 0.5rem; /* Espaçamento interno do cabeçalho */
+    position: fixed; /* Fixa o cabeçalho no topo da página */
+    top: 0;
+    left: 0;
+    width: 100%; /* Faz com que o cabeçalho ocupe toda a largura da página */
+    z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
+    box-sizing: border-box; /* Inclui o padding e a borda na largura total */
+}
+
+header img {
+    width: 400px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-right: 10px; /* Espaçamento entre a imagem e o título */
+}
+
+header h1 {
+    color: #ffffff; /* Cor do texto do título */
+    font-size: 2.5rem; /* Tamanho da fonte do título */
+    margin: 0; /* Remove a margem padrão */
+    text-align: left; /* Alinha o texto à esquerda */
+    flex: 1; /* Faz o título ocupar o espaço restante disponível */
+}
+
+/* Estiliza o container dos botões */
+#button-container {
+    display: flex; /* Usa Flexbox para alinhar os botões */
+    justify-content: flex-end; /* Alinha os botões à direita */
+    align-items: center; /* Alinha os botões verticalmente no centro */
+}
+
+/* Estiliza os botões */
+.button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #9c0202; /* Cor de fundo dos botões */
+    border-radius: 30px;
+    font-size: 1rem;
+}
+
+.button:hover {
+    background-color: #ca5a5a; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estiliza a barra de pesquisa */
+.search-bar {
+    padding-top: 0; /* Remove o padding superior para ajustar a posição */
+    margin: 0; /* Remove as margens */
+    position: absolute; /* Posiciona a barra de pesquisa de forma absoluta */
+    right: 10px; /* Ajusta a posição da barra de pesquisa a partir da borda direita */
+    top: 50%; /* Posiciona a barra de pesquisa verticalmente centralizada no cabeçalho */
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    display: flex;
+    align-items: center; /* Alinha o conteúdo verticalmente */
+    width: auto; /* Ajusta a largura da barra de pesquisa conforme o conteúdo */
+    max-width: 300px; /* Define uma largura máxima para a barra de pesquisa */
+}
+
+.search-bar input {
+    padding: 10px 30px 10px 10px; /* Ajusta o padding para espaço para o ícone */
+    border: 2px solid #ccc;
+    border-radius: 30px; /* Deixa a barra arredondada */
+    font-size: 16px;
+    outline: none;
+    width: 100%;
+}
+
+.search-bar .search-icon {
+    position: absolute;
+    right: 10px; /* Ajusta o ícone para a borda direita da barra de pesquisa */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.search-bar .search-icon img {
+    width: 20px; /* Ajuste o tamanho do ícone conforme necessário */
+    height: 20px;
+}
+
+/* Estiliza a seção principal para ocupar o espaço restante */
+main {
+    padding-top: 3.0rem;
+    flex: 1;
+}
+
+/* Estiliza a mensagem de nenhum resultado encontrado */
+.nenhum-resultado {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100%;
+    text-align: left;
+    color: #ffffff; /* Cor do texto */
+    margin-top: 2rem;
+}
+
+.nenhum-resultado p {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Estiliza o rodapé */
+footer {
+    background-color: #000000; /* Cor de fundo para o footer */
+    padding: 10px; /* Espaçamento interno */
+    position: relative; /* Garante que o rodapé não sobreponha outros elementos */
+    text-align: center; /* Centraliza o conteúdo do footer */
+}
+
+#footer-content {
+    display: flex; /* Usa flexbox para alinhar itens horizontalmente */
+    flex-direction: column; /* Alinha ícones e texto verticalmente */
+    align-items: center; /* Alinha verticalmente os itens ao centro */
+}
+
+.footer-left {
+    display: flex; /* Alinha os ícones horizontalmente */
+    margin-bottom: 10px; /* Espaçamento abaixo dos ícones */
+}
+
+.footer-icon {
+    margin: 0 10px; /* Espaçamento entre os ícones */
+    color: white; /* Cor dos ícones */
+    font-size: 24px; /* Tamanho dos ícones */
+    text-decoration: none; /* Remove o sublinhado dos links */
+}
+
+.footer-icon:hover {
+    color: #726767; /* Cor ao passar o mouse */
+}
+
+.footer-text {
+    color: white; /* Cor do texto */
+    font-size: 16px; /* Tamanho do texto */
+}
+
+
+/* Estiliza a seção "Sobre a Série" */
+#sobre-serie {
+    width: 90%;
+    max-width: 1200px;
+    margin: 1rem 0rem; /* Ajuste a margem para aproximar do lado esquerdo */
+    padding: 4rem;
+    border-radius: 0.6rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#sobre-serie h2 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+    text-align: left; /* Alinha o texto ao centro */
+    width: 100%; /* Garante que o h2 ocupe toda a largura disponível */
+}
+
+.sobre-conteudo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+}
+
+.sobre-texto {
+    width: 60%; /* Define a largura do texto (ajustável conforme necessário) */
+    text-align: left; /* Alinha o texto à esquerda */
+    border-radius: 0.6rem;
+}
+
+/* Estiliza a seção de trailers */
+#trailers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas de largura igual */
+    gap: 20px; /* Espaçamento entre os trailers */
+    margin: 0 auto; /* Centraliza o grid horizontalmente */
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    max-width: 1200px; /* Ajuste a largura máxima conforme necessário */
+}
+
+.trailer {
+    background-color: #a8a8a8c0;
+    border: 0.5px solid #dddddd60;
+    padding: 20px;
+    text-align: center;
+    border-radius: 0.6rem;
+}
+
+.trailer h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.trailer iframe {
+    width: 100%;
+    height: 200px; /* Ajuste conforme necessário */
+    border-radius: 0.6rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estiliza a seção de personagens */
+#personagens {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    gap: 20px; /* Espaçamento entre os cards */
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 0 1rem; /* Adiciona padding lateral para evitar overflow */
+}
+
+/* Estiliza cada card de personagem */
+.personagem {
+    display: flex; /* Usa Flexbox para alinhamento horizontal */
+    align-items: center; /* Alinha verticalmente no centro */
+    background-color: #a8a8a8c0;
+    border: 0.5px solid #dddddd60;
+    padding: 20px;
+    border-radius: 0.6rem;
+}
+
+.personagem img {
+    width: 100px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: auto;
+    border-radius: 50%;
+    margin-right: 15px; /* Espaçamento entre a imagem e o texto */
+}
+
+.personagem div {
+    flex: 1;
+}
+
+/* Estiliza a barra de pesquisa na página de personagens */
+#search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem; /* Espaçamento abaixo da barra de pesquisa */
+}
+
+#search-container input {
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid #ccc;
+    width: 300px;
+    margin-right: 10px; /* Espaçamento entre a barra de pesquisa e o botão */
+}
+
+#search-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #9c0202;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Media Query para telas menores que 768px (por exemplo, tablets e celulares) */
+@media (max-width: 768px) {
+    /* Ajusta o layout do cabeçalho para telas menores */
+    header {
+        flex-direction: column; /* Alinha os itens verticalmente */
+        padding: 1rem; /* Ajusta o padding do cabeçalho */
+    }
+
+    .header-content {
+        flex-direction: column; /* Alinha o conteúdo verticalmente */
+        align-items: flex-start; /* Alinha o conteúdo à esquerda */
+        width: 100%; /* Garante que o conteúdo ocupe toda a largura disponível */
+    }
+
+    header img {
+        width: 150px; /* Ajusta o tamanho da imagem do logo */
+        margin-bottom: 1rem; /* Adiciona espaço abaixo da imagem */
+    }
+
+    header h1 {
+        font-size: 1.8rem; /* Reduz o tamanho da fonte do título */
+        text-align: center; /* Centraliza o título */
+        margin: 0; /* Remove a margem padrão */
+    }
+
+    .search-bar {
+        width: 100%; /* Ajusta a largura da barra de pesquisa para preencher o espaço disponível */
+        margin: 1rem 0; /* Adiciona margem superior e inferior */
+        position: relative; /* Define a posição relativa */
+    }
+
+    .search-bar input {
+        width: calc(100% - 40px); /* Ajusta a largura do campo de pesquisa */
+        padding: 10px; /* Ajusta o padding */
+    }
+
+    .search-bar .search-icon {
+        right: 10px; /* Ajusta a posição do ícone */
+    }
+
+    #button-container {
+        display: flex; /* Usa Flexbox para o layout dos botões */
+        flex-direction: column; /* Alinha os botões verticalmente */
+        align-items: center; /* Centraliza os botões */
+        width: 100%; /* Garante que o container ocupe toda a largura disponível */
+        margin-top: 1rem; /* Adiciona uma margem superior */
+    }
+
+    .button {
+        margin: 0.5rem 0; /* Adiciona margem superior e inferior aos botões */
+        width: 100%; /* Faz com que os botões ocupem toda a largura disponível */
+        text-align: center; /* Centraliza o texto dos botões */
+    }
+
+    #sobre-serie {
+        padding: 2rem; /* Ajusta o padding da seção "Sobre a Série" */
+        margin: 8rem 0; /* Ajusta a margem para se aproximar da borda esquerda */
+    }
+
+    .sobre-conteudo {
+        flex-direction: column; /* Alinha o conteúdo verticalmente em telas menores */
+    }
+
+    .sobre-texto {
+        width: 100%; /* Ajusta a largura do texto para ocupar toda a largura disponível */
+    }
+
+    #trailers {
+        margin: 4rem 0;
+        grid-template-columns: 1fr; /* Exibe os trailers em uma coluna em telas menores */
+    }
+
+    #personagens {
+        margin: 12rem 0;
+        grid-template-columns: 1fr; /* Exibe os personagens em uma coluna em telas menores */
+    }
+
+    .personagem img {
+        width: 80px; /* Reduz o tamanho da imagem dos personagens para telas menores */
+    }
+
+    /* Estilo adicional para footer em dispositivos móveis */
+    .footer-left {
+        flex-direction: column; /* Alinha ícones verticalmente */
+    }
+}
